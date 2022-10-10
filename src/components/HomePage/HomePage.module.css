@@ -1,0 +1,70 @@
+.home {
+  width: 100%;
+  margin-top: 15rem;
+  margin-bottom: 10rem;
+}
+
+.innerContainer {
+  max-width: 148rem;
+  margin: auto;
+}
+
+.moviesContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  justify-content: center;
+  justify-items: center;
+  column-gap: 3rem;
+  row-gap: 10rem;
+  margin-bottom: 10rem;
+}
+
+/* ////// movie card */
+.card {
+  width: 85%;
+  height: 40rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.ratingContainer {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  padding: 3px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.2s;
+  z-index: 2;
+
+  /* column-gap: 3px; */
+}
+.card:hover {
+  box-shadow: 0;
+}
+
+.card:hover .ratingContainer,
+.card:hover .cardOverlay {
+  opacity: 1;
+}
+
+.cardOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(15, 0, 0, 0.3); */
+  background-image: linear-gradient(
+    to top right,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.5)
+  );
+  opacity: 0;
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+}
