@@ -122,12 +122,13 @@ const HomePage = () => {
           ) : (
             <>
               {skeletons.map((item) => (
-                <Skeleton
-                  key={item}
-                  variant="rectangular"
-                  width={"85%"}
-                  height={"40rem"}
-                />
+                <div className={styles.movieSkeletonContainer} key={item}>
+                  <Skeleton
+                    variant="rectangular"
+                    width={"100%"}
+                    height={"100%"}
+                  />
+                </div>
               ))}
             </>
           )}

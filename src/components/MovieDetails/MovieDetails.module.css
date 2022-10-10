@@ -17,6 +17,7 @@
   max-width: 128rem;
   margin: auto;
   transform: translateY(-45%);
+  padding: 0 2rem;
 }
 .contentInnerContainer {
   display: flex;
@@ -25,7 +26,7 @@
 }
 
 .posterImgContainer {
-  width: 20rem;
+  width: 25rem;
 }
 
 .posterImg {
@@ -44,8 +45,24 @@
 .textContainer {
   max-width: 128rem;
   margin: auto;
+  padding: 0 2rem;
 }
 
 .storyContainer {
   margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .posterImgContainer {
+    width: 22rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .contentInnerContainer {
+    column-gap: 3rem;
+  }
+  .movieName {
+    font-size: 3rem !important;
+  }
 }

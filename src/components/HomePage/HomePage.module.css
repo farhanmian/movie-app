@@ -63,6 +63,10 @@
   );
   opacity: 0;
 }
+.movieSkeletonContainer {
+  width: 85%;
+  height: 40rem;
+}
 
 .paginationContainer {
   display: flex;
@@ -76,4 +80,79 @@
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+@media only screen and (max-width: 1500px) {
+  .moviesContainer {
+    column-gap: 1.5rem;
+    row-gap: 7 rem;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .moviesContainer {
+    column-gap: 1.5rem;
+    row-gap: 6rem;
+  }
+  .card {
+    width: 90%;
+    /* height: 35rem; */
+  }
+  .movieSkeletonContainer {
+    width: 80%;
+    height: 38rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .moviesContainer {
+    grid-template-columns: repeat(3, 30%);
+  }
+  .card {
+    max-width: 20vw;
+    height: 28vw;
+  }
+  .movieSkeletonContainer {
+    width: 20vw;
+    height: 28vw;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .card {
+    max-width: 25vw;
+    height: 35vw;
+  }
+  .movieSkeletonContainer {
+    width: 25vw;
+    height: 35vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .moviesContainer {
+    grid-template-columns: repeat(2, 40%);
+  }
+  .card {
+    max-width: 34vw;
+    height: 48vw;
+  }
+  .movieSkeletonContainer {
+    width: 34vw;
+    height: 48vw;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .moviesContainer {
+    grid-template-columns: repeat(2, 45%);
+  }
+  .card {
+    max-width: 37vw;
+    height: 55vw;
+  }
+  .movieSkeletonContainer {
+    width: 37vw;
+    height: 55vw;
+  }
 }

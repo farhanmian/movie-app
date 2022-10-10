@@ -8,46 +8,6 @@ import axios from "axios";
 
 const BaseUrl = "https://image.tmdb.org/t/p/original";
 
-const dummyData = {
-  backdrop_path: "/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg",
-  genres: [
-    {
-      id: 28,
-      name: "Action",
-    },
-    {
-      id: 12,
-      name: "Adventure",
-    },
-    {
-      id: 878,
-      name: "Science Fiction",
-    },
-  ],
-  id: 634649,
-  original_title: "Spider-Man: No Way Home",
-  overview:
-    "Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.",
-  poster_path: "/uJYYizSuA9Y3DCs0qS4qWvHfZg4.jpg",
-  release_date: "2021-12-15",
-  spoken_languages: [
-    {
-      english_name: "English",
-      iso_639_1: "en",
-      name: "English",
-    },
-    {
-      english_name: "Tagalog",
-      iso_639_1: "tl",
-      name: "",
-    },
-  ],
-  status: "Released",
-  tagline: "The Multiverse unleashed.",
-  title: "Spider-Man: No Way Home",
-  vote_average: 8.035,
-};
-
 const MuiStyles = {
   genreItem: {
     padding: ".7rem 1.2rem",
@@ -155,7 +115,12 @@ const MovieDetails = () => {
           {/* text */}
           <div className={styles.movieBasicDetailsContainer}>
             {!isLoading ? (
-              <Typography variant="h2" fontWeight={"bold"} color="primary">
+              <Typography
+                variant="h2"
+                fontWeight={"bold"}
+                color="primary"
+                className={styles.movieName}
+              >
                 {movieData?.title}
               </Typography>
             ) : (

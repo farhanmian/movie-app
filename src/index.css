@@ -4,6 +4,7 @@
 html,
 body {
   font-size: 10px;
+  overflow-x: hidden;
 }
 
 body {
@@ -15,7 +16,6 @@ body {
   min-height: 100vh;
   /* background-image: linear-gradient(#485563, #29323c); */
   background-color: #1c1c1e;
-  overflow-x: hidden;
 }
 
 #root {
@@ -28,4 +28,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@media only screen and (max-width: 1500px) {
+  html,
+  body {
+    font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  html,
+  body {
+    font-size: 8px;
+  }
 }
