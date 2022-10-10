@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Nav.module.css";
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useAppContext } from "../../store/context/context";
 
 const MuiStyles = {
   input: {
@@ -30,6 +31,8 @@ const MuiStyles = {
 };
 
 const Nav = () => {
+  const ctx = useAppContext();
+
   return (
     <nav className={styles.nav}>
       <div className={styles.innerContainer}>
@@ -38,6 +41,9 @@ const Nav = () => {
           variant="outlined"
           sx={MuiStyles.input}
           size="small"
+          onChange={(e) => {
+            ctx?.setSearchValue(e.target.value);
+          }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

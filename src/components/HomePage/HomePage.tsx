@@ -5,25 +5,63 @@ import StarIcon from "@mui/icons-material/Star";
 import styles from "./HomePage.module.css";
 import { movieType } from "../../store/types";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useAppContext } from "../../store/context/context";
+
+const BaseUrl = "https://movie-task.vercel.app/api";
+
+const MuiStyles = {
+  "404Text": {
+    fontSize: "30rem",
+    fontWeight: "bold",
+    color: "#B1DDEA",
+    lineHeight: 1,
+  },
+};
 
 const HomePage = () => {
+  const ctx = useAppContext();
+  const searchValue = ctx?.searchValue;
   const navigate = useNavigate();
   const location = useLocation();
   const pageNumber = location.search.replace("?page=", "");
   console.log(pageNumber);
 
   const [moviesData, setMoviesData] = useState<movieType[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(pageNumber ? +pageNumber : 1);
 
   const skeletons = [0, 1, 2, 3, 4, 5, 6, 7];
 
+  /**
+   * fetching data
+   */
   useEffect(() => {
+    if (searchValue && searchValue.trim().length > 0) return;
     setIsLoading(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
+    fetchMovies(`${BaseUrl}/popular?page=${page}`);
+  }, [page, searchValue]);
+
+  /**
+   * fetching search results
+   */
+  useEffect(() => {
+    if (!searchValue || searchValue.trim().length === 0) return;
+    setIsLoading(true);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    fetchMovies(`${BaseUrl}/search?page=${page}&query=${searchValue}`);
+  }, [page, searchValue]);
+
+  useEffect(() => {
+    if (pageNumber) {
+      setPage(+pageNumber);
+    }
+  }, [pageNumber]);
+
+  const fetchMovies = (url: string) => {
     axios
-      .get(`https://movie-task.vercel.app/api/popular?page=${page}`)
+      .get(url)
       .then((response) => {
         console.log(response);
         const data: movieType[] = [];
@@ -43,13 +81,7 @@ const HomePage = () => {
         console.log(err);
         setIsLoading(false);
       });
-  }, [page]);
-
-  useEffect(() => {
-    if (pageNumber) {
-      setPage(+pageNumber);
-    }
-  }, [pageNumber]);
+  };
 
   const pageChangeHandler = (
     event: React.ChangeEvent<unknown>,
@@ -100,6 +132,7 @@ const HomePage = () => {
             </>
           )}
         </div>
+
         {totalPages > 0 && (
           <div className={styles.paginationContainer}>
             <Pagination
@@ -108,6 +141,17 @@ const HomePage = () => {
               variant="outlined"
               onChange={pageChangeHandler}
             />
+          </div>
+        )}
+
+        {!isLoading && moviesData.length === 0 && (
+          <div className={styles.errorContainer}>
+            <Typography variant="h1" sx={MuiStyles["404Text"]}>
+              404
+            </Typography>
+            <Typography variant="h4" color="primary">
+              There is no such movie
+            </Typography>
           </div>
         )}
       </div>
