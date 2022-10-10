@@ -13,7 +13,6 @@ const MuiTheme = createTheme({
 
     h2: {
       fontSize: "4.2rem",
-      lineHeight: "49.22px",
       fontWeight: "bold",
     },
 

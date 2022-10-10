@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import { Typography } from "@mui/material";
+import Logo from "../partials/Logo/Logo";
 
 const Footer = () => {
   return (

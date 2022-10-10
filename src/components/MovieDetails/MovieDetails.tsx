@@ -5,8 +5,7 @@ import { useParams } from "react-router-dom";
 
 import { movieDetailType } from "../../store/types";
 import axios from "axios";
-
-const BaseUrl = "https://image.tmdb.org/t/p/original";
+import { Img_BaseUrl } from "../../utils";
 
 const MuiStyles = {
   genreItem: {
@@ -79,7 +78,7 @@ const MovieDetails = () => {
         className={styles.movieBgImg}
         style={{
           backgroundImage: !isLoading
-            ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(${BaseUrl}${movieData?.backdrop_path})`
+            ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(${Img_BaseUrl}${movieData?.backdrop_path})`
             : "",
         }}
       >
@@ -98,7 +97,7 @@ const MovieDetails = () => {
           <div className={styles.posterImgContainer}>
             {!isLoading && (
               <img
-                src={`${BaseUrl}${movieData?.poster_path}`}
+                src={`${Img_BaseUrl}${movieData?.poster_path}`}
                 alt="poster"
                 className={styles.posterImg}
               />

@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import styles from "./Nav.module.css";
-import { InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, TextField, Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppContext } from "../../store/context/context";
 import { useLocation } from "react-router-dom";
+import Logo from "../partials/Logo/Logo";
 
 const MuiStyles = {
   input: {
@@ -44,6 +45,7 @@ const Nav = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.innerContainer}>
+        <Logo />
         <TextField
           placeholder="Search"
           variant="outlined"

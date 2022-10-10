@@ -6,12 +6,11 @@ import styles from "./HomePage.module.css";
 import { movieType } from "../../store/types";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAppContext } from "../../store/context/context";
-
-const BaseUrl = "https://movie-task.vercel.app/api";
+import { BaseUrl } from "../../utils";
 
 const MuiStyles = {
   "404Text": {
-    fontSize: "30rem",
+    fontSize: "10rem",
     fontWeight: "bold",
     color: "#B1DDEA",
     lineHeight: 1,
