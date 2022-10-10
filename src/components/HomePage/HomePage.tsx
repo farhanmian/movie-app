@@ -91,8 +91,6 @@ const HomePage = () => {
     navigate(`?page=${value}`);
   };
 
-  // console.log("data", moviesData);
-
   return (
     <section className={styles.home}>
       <div className={styles.innerContainer}>
@@ -107,6 +105,7 @@ const HomePage = () => {
                 sx={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/original${item.poster_path})`,
                   backgroundSize: "cover",
+                  backgroundColor: "#000",
                 }}
               >
                 <div className={styles.ratingContainer}>

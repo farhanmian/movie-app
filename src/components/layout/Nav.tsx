@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Nav.module.css";
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useAppContext } from "../../store/context/context";
+import { useLocation } from "react-router-dom";
 
 const MuiStyles = {
   input: {
@@ -31,7 +32,14 @@ const MuiStyles = {
 };
 
 const Nav = () => {
+  const { pathname } = useLocation();
+  const id = pathname.replace("/movie/", "");
   const ctx = useAppContext();
+
+  useEffect(() => {
+    if (!id) return;
+    ctx?.setSearchValue("");
+  }, [id]);
 
   return (
     <nav className={styles.nav}>
@@ -44,6 +52,7 @@ const Nav = () => {
           onChange={(e) => {
             ctx?.setSearchValue(e.target.value);
           }}
+          value={ctx?.searchValue}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
